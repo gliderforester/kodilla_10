@@ -1,21 +1,21 @@
-function Telefon(marka, cena, kolor, ekran, system) {
-	this.marka=marka;
-	this.cena=cena;
-	this.kolor=kolor;
-	this.ekran=ekran;
-	this.system=system;
+$(function () {
 
-}
-Telefon.prototype.printInfo = function() {
-	console.log('Marka telefonu to ' + this.marka + ', kolor to ' + this.kolor + ', a cena to ' + this.cena + ' PLN.');
-}
-Telefon.prototype.techInfo = function() {
-	console.log('Dane techniczne: ekran (' + this.ekran + '"); system operacyjny (' + this.system + ').');
-}
+	function Button(text) {
+		this.text = text || 'Hello';
+	}
 
-var samsungGS6 = new Telefon('Samsung', 1800, 'czarny', 5.5 , 'Android 6.0');
-var iPhone6S = new Telefon('Apple', 2250, 'srebrny', 5.5, 'iOS 10.0');
-var onePlusone = new Telefon('OnePlus', 1300, 'srebrny', 5.5, 'Android 7.0' );
+	Button.prototype = {
+		create: function() {
+			var self = this;
+			this.$element = $('<button>');
+			this.$element.text(this.text);
+			this.$element.click(function() {
+				alert(self.text);
+			});
+			this.$element.appendTo($('body'));
+		}
+	}
 
-iPhone6S.printInfo();
-iPhone6S.techInfo();
+	var btn1 = new Button('Kontekst');
+	btn1.create();
+});
